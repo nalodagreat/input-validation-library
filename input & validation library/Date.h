@@ -1,3 +1,7 @@
+// This file is part of my personal date library "Date"
+// Originally developed to simplify coding tasks.
+// Original repository: https://github.com/nalodagreat/Date-Library
+
 #pragma once
 #include <iostream>
 #include <string>
@@ -85,7 +89,7 @@ public:
 		systemDate.year = now.tm_year + 1900;
 		return systemDate;
 	}
-	static bool Isdate1Beforedate2(Date date1, Date date2)
+	static bool isdate1Beforedate2(Date date1, Date date2)
 	{
 		return (date1.year < date2.year)
 			? true
@@ -98,14 +102,14 @@ public:
 				: false);
 	}
 
-	static bool IsDate1EqualDate2(Date date1, Date date2)
+	static bool isDate1EqualDate2(Date date1, Date date2)
 	{
 		return  (date1.year == date2.year) ? ((date1.month == date2.month) ? ((date1.day == date2.day) ? true : false) : false) : false;
 	}
 	bool IsDateBeforeDate2(Date date2)
 	{
 		//note: *this sends the current object :-)
-		return  Isdate1Beforedate2(*this, date2);
+		return  isdate1Beforedate2(*this, date2);
 	}
 
 	static bool isLeapYear(short year)
@@ -190,6 +194,11 @@ public:
 		return day == numberOfDaysInAMonth(month, year);
 	}
 
+	static bool isDate1AfterDate2(Date Date1, Date Date2)
+	{
+		return (!isdate1Beforedate2(Date1, Date2) && !isDate1EqualDate2(Date1, Date2));
+
+	}
 
 };
 
