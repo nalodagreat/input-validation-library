@@ -68,7 +68,7 @@ public:
         }
         return number;
     }
-
+  	
     static float readFloatNumber(const std::string& errorMessage = "Invalid number, enter again:\n")
     {
         float number;
@@ -104,6 +104,26 @@ public:
     static double readDblNumberBetween(double from, double to, const std::string& errorMessage = "Number is not within range, enter again:\n")
     {
         double number = readDblNumber();
+        while (!isNumberBetween(number, from, to)) {
+            std::cout << errorMessage;
+            number = readDblNumber();
+        }
+        return number;
+    }
+	static short readShortNumber(const std::string& errorMessage = "Invalid number, enter again:\n")
+	{
+		short number;
+	
+	 while (!(std::cin >> number)) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << errorMessage;
+        }
+        return number;
+	}
+	 static double readShortNumberBetween(short from, short to, const std::string& errorMessage = "Number is not within range, enter again:\n")
+    {
+        short number = readDblNumber();
         while (!isNumberBetween(number, from, to)) {
             std::cout << errorMessage;
             number = readDblNumber();
