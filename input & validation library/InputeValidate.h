@@ -48,5 +48,66 @@ public:
         return s;
     }
 
+	static int readIntNumber(const std::string& errorMessage = "Invalid number, enter again:\n")
+    {
+        int number;
+        while (!(std::cin >> number)) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << errorMessage;
+        }
+        return number;
+    }
 
+    static int readIntNumberBetween(int from, int to, const std::string& errorMessage = "Number is not within range, enter again:\n")
+    {
+        int number = readIntNumber();
+        while (!isNumberBetween(number, from, to)) {
+            std::cout << errorMessage;
+            number = readIntNumber();
+        }
+        return number;
+    }
+
+    static float readFloatNumber(const std::string& errorMessage = "Invalid number, enter again:\n")
+    {
+        float number;
+        while (!(std::cin >> number)) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << errorMessage;
+        }
+        return number;
+    }
+
+    static float readFloatNumberBetween(float from, float to, const std::string& errorMessage = "Number is not within range, enter again:\n")
+    {
+        float number = readFloatNumber();
+        while (!isNumberBetween(number, from, to)) {
+            std::cout << errorMessage;
+            number = readFloatNumber();
+        }
+        return number;
+    }
+
+    static double readDblNumber(const std::string& errorMessage = "Invalid number, enter again:\n")
+    {
+        double number;
+        while (!(std::cin >> number)) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << errorMessage;
+        }
+        return number;
+    }
+
+    static double readDblNumberBetween(double from, double to, const std::string& errorMessage = "Number is not within range, enter again:\n")
+    {
+        double number = readDblNumber();
+        while (!isNumberBetween(number, from, to)) {
+            std::cout << errorMessage;
+            number = readDblNumber();
+        }
+        return number;
+    }
 };
